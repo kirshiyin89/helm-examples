@@ -1,0 +1,15 @@
+apiVersion: batch/v1​
+kind: Job​
+metadata:​
+name: notify-job​
+annotations:​
+"helm.sh/hook": post-install, post-upgrade​
+spec:​
+template:​
+spec:​
+containers:​
+- name: notify​
+image: alpine​
+command: ["sh", "-c", "echo 'Notification: Helm release has been
+installed or upgraded!'"]​
+restartPolicy: Never
